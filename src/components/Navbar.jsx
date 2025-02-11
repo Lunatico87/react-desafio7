@@ -1,10 +1,6 @@
 import React, { useContext } from "react";
 import { NavLink } from "react-router-dom";
 import "../App.css";
-import iconPizza from "../assets/img/icon-pizza.png";
-import iconLockclose from "../assets/img/icon-lockclose.png";
-import iconLockkey from "../assets/img/icon-lockkey.png";
-import iconLockopen from "../assets/img/icon-lockopen.png";
 import iconCart from "../assets/img/icon-cart.png";
 import { CartContext } from "../context/CartContext";
 import { UserContext } from "../context/UserContext";
@@ -16,97 +12,80 @@ const Navbar = () => {
   const { token, actualizarToken } = useContext(UserContext);
   return (
     <>
-      <nav className="navbar bg-dark">
-        <div className="container-fluid me-auto">
-          <div className="text-white">
-            <span>Pizzeria Mamma Mia!</span>
+      <nav className="navbar navbar-expand-lg">
+        <div className="container-fluid justify-content-center">
+          <div className="col-3 text-black">
+            <span>LOGO</span>
+          </div>
+          <div className="col-6 text-black-center me-auto">
+          <ul class="navbar-nav justify-content-evenly me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
             <NavLink
               to="/"
               className={setActiveClass} 
               id="home"
               
             >
-              <img
-                src={iconPizza}
-                alt="icon pizza"
-                width="30"
-                height="24"
-                className="d-inline-block align-text-top"
-              />
               Home
             </NavLink>
-
+              
+            </li>
+            <li class="nav-item">
+            <NavLink
+              to="/productos"
+              className={setActiveClass} 
+              id="productos"
+              
+            > Productos
+            </NavLink>
+            </li>
+            <li class="nav-item">
+            <NavLink
+              to="/quienes-somos"
+              className={setActiveClass} 
+              id="quienes-somos"
+              
+            >
+              Quienes somos
+            </NavLink>
+            </li>
+            <li class="nav-item">
+            <NavLink
+              to="/contacto"
+              className={setActiveClass} 
+              id="contacto"
+              
+            >
+              Contáctanos
+            </NavLink>
+            </li>
+          </ul>
+            </div>
+            
+            <div className="col-3 display-flex align-items-end">
             {token ? (
               <>
-                <NavLink
+              <ul class="navbar-nav  mb-2 mb-lg-0">
+        <li class="nav-item">
+        <NavLink
                   to="/profile"
                   className={setActiveClass} 
                   id="profile"
-                  
                 >
                   {" "}
-                  <img
-                    src={iconLockopen}
-                    alt="icon lock open"
-                    width="30"
-                    height="24"
-                    className="d-inline-block align-text-top"
-                  />
-                  Profile
-                </NavLink>
-                <NavLink
+                  Perfil
+                </NavLink>        </li>
+        <li class="nav-item">
+        <NavLink
                   to="/login"
                   id="logout"
-                  className='btnav navbar-brand text-white btn btn-sm'
+                  className='btnav navbar-brand text-black btn btn-sm'
                   onClick={actualizarToken}
                 >
-                  <img
-                    src={iconLockclose}
-                    alt="icon lock close"
-                    width="30"
-                    height="24"
-                    className="d-inline-block align-text-top"
-                  />
-                  Logout
-                </NavLink>{" "}
-              </>
-            ) : (
-              <>
+                  Salir
+                </NavLink>{" "}        </li>
+                <li class="nav-item">
                 <NavLink
-                  to="/login"
-                  id="login"
-                  className={setActiveClass} 
-                  
-                >
-                  <img
-                    src={iconLockkey}
-                    alt="icon lock key"
-                    width="30"
-                    height="24"
-                    className="d-inline-block align-text-top"
-                  />
-                  Login
-                </NavLink>
-                <NavLink
-                  to="/register"
-                  id="register"
-                  className={setActiveClass} 
-                  
-                >
-                  <img
-                    src={iconLockkey}
-                    alt="icon lock key"
-                    width="30"
-                    height="24"
-                    className="d-inline-block align-text-top"
-                  />
-                  Register
-                </NavLink>
-              </>
-            )}
-          </div>
-          <div>
-            <NavLink
               to="/cart"
               id="total"
               className={setActiveClass} 
@@ -119,8 +98,32 @@ const Navbar = () => {
                 height="24"
                 className="d-inline-block align-text-top"
               />
-              Total: {formatted_total}
             </NavLink>
+            </li>
+      </ul>
+              </>
+            ) : (
+              <>
+              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+        <NavLink
+                  to="/login"
+                  id="login"
+                  className={setActiveClass} 
+                >
+                  Login
+                </NavLink>        </li>
+        <li class="nav-item">
+        <NavLink
+                  to="/register"
+                  id="register"
+                  className={setActiveClass} 
+                >
+                  Register
+                </NavLink>        </li>
+      </ul>
+              </>
+            )}
           </div>
         </div>
       </nav>
